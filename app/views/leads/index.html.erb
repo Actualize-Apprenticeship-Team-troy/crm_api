@@ -11,7 +11,7 @@
         <% end %>
 
       </div>
-
+<PRE>{{leads | json}}</PRE>
       <div class="row">
         <div class="table-responsive leads-table">
           <table class="table table-striped table-hover">
@@ -34,7 +34,7 @@
                 <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
                 <td>{{ lead.phone }}</td>
                 <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
-                <td>blah</td>
+                <td>{{ lead.notes }}</td>
               </tr>
             </tbody>
           </table>
