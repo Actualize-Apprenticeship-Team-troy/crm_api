@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  outreach_text: MyString
+  lead_id: 1
+
+two:
+  outreach_text: MyString
+  lead_id: 1
