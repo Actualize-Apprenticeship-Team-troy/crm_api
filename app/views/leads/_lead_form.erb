@@ -74,14 +74,12 @@
         <div class="card-header d-flex align-items-center">
           <h2 class="h5 display">Post-Call Records</h2>
         </div>
+        <div class="update-lead-form">
         <div class="form-group">
-              <%= f.fields_for :outreaches do |builder| %>
-                 <%= builder. :outreach_text %>
-              <% end %>
             <div class="i-checks">
-              <%= f.label :latest_outreach, "Latest Outreach" %>
+              <%= f.label "Latest Outreach" %>
               <%= f.fields_for :outreaches, @lead.outreaches.build do |text| %>
-                  <%= text.text_field :outreach_text %>
+                  <%= text.text_field :outreach_text, class: 'form-control' %>
               <% end %>
             </div>
         </div>
@@ -90,13 +88,7 @@
                 <%= f.label :next_step, "Next Step" %>
                 <%= f.text_field :next_step, class: 'form-control' %>
               </div>
-            </div>
-            <!-- <div class="i-checks">
-              <%#= f.label :latest_outreach, "Latest Outreach" %>
-              <%#= f.text_field @outreaches.outreach_text, class: 'form-control' %>
-            </div> -->
         </div>
-        <div class="update-lead-form">
           <div class="form-group">
             <div class="i-checks">
               <%= f.label :connected, "Connected?" %>
@@ -213,15 +205,15 @@
                 <%= f.text_area :rep_notes, class: 'form-control' %>
               </div>
             </div>
-            <div>
-
         <% end %>
     </div>
   </div>
 </div>
+<div class="container">
 <div class="row">
-  <div class="col-md-6" id="update-btn-col">
-    <%= f.submit :next, {value: @call_mode ? "Process and Move On to Next Lead" : "Update", class: 'btn btn-primary btn-lg update-btn'} %>
+    <div class="col-md-6" id="update-btn-col">
+      <%= f.submit :next, {value: @call_mode ? "Process and Move On to Next Lead" : "Update", class: 'btn btn-primary btn-lg update-btn'} %>
+    </div>
   </div>
 </div>
 <% end %>
