@@ -70,14 +70,7 @@
   </div>
 
   <!-- Begin List of all outreaches -->
-  <div class="card">
-    <p> Outreaches:</p>
-    <ul>
-      <% @outreaches.each do |outreach| %>
-      <li><%= outreach.outreach_text %></li>
-    <% end %>
-    </ul>
-  </div>
+  
   <!-- End List fo all outreaches -->
 
   <div class="row">
@@ -87,6 +80,14 @@
           <h2 class="h5 display">Post-Call Records</h2>
         </div>
         <div class="update-lead-form">
+        <p> Outreaches:</p>
+        <div class="form-group">
+          <ul class="outreaches-ul">
+            <% @outreaches.each do |outreach| %>
+            <li><%= outreach.outreach_text %></li>
+          <% end %>
+          </ul>
+        </div>
         <div class="form-group">
             <div class="i-checks">
               <%= f.label "Latest Outreach" %>
