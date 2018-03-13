@@ -68,6 +68,18 @@
       </div>
     </div>
   </div>
+
+  <!-- Begin List of all outreaches -->
+  <div class="card">
+    <p> Outreaches:</p>
+    <ul>
+      <% @outreaches.each do |outreach| %>
+      <li><%= outreach.outreach_text %></li>
+    <% end %>
+    </ul>
+  </div>
+  <!-- End List fo all outreaches -->
+
   <div class="row">
     <div class="col-lg-6">
       <div class="card">

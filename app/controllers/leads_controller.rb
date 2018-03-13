@@ -34,6 +34,7 @@ class LeadsController < ApplicationController
   end
 
   def edit
+    @outreaches = Outreach.all
     @lead = Lead.find_by(id: params[:id])
     @testing = "this is a test"
     # We grab the entire text history from the Twilio API
