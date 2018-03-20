@@ -68,6 +68,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Begin List of all outreaches -->
+  
+  <!-- End List fo all outreaches -->
+
   <div class="row">
     <div class="col-lg-6">
       <div class="card">
@@ -75,6 +80,28 @@
           <h2 class="h5 display">Post-Call Records</h2>
         </div>
         <div class="update-lead-form">
+        <p> Outreaches:</p>
+        <div class="form-group">
+          <ul class="outreaches-ul">
+            <% @lead_outreaches.each do |outreach| %>
+            <li><%= outreach.outreach_text %></li>
+          <% end %>
+          </ul>
+        </div>
+        <div class="form-group">
+            <div class="i-checks">
+              <%= f.label "Latest Outreach" %>
+              <%= f.fields_for :outreaches, @lead.outreaches.build do |text| %>
+                  <%= text.text_field :outreach_text, class: 'form-control' %>
+              <% end %>
+            </div>
+        </div>
+        <div class="form-group">
+              <div class="i-checks">
+                <%= f.label :next_step, "Next Step" %>
+                <%= f.text_field :next_step, class: 'form-control' %>
+              </div>
+        </div>
           <div class="form-group">
             <div class="i-checks">
               <%= f.label :connected, "Connected?" %>
@@ -191,15 +218,15 @@
                 <%= f.text_area :rep_notes, class: 'form-control' %>
               </div>
             </div>
-            <div>
-
         <% end %>
     </div>
   </div>
 </div>
+<div class="container">
 <div class="row">
-  <div class="col-md-6" id="update-btn-col">
-    <%= f.submit :next, {value: @call_mode ? "Process and Move On to Next Lead" : "Update", class: 'btn btn-primary btn-lg update-btn'} %>
+    <div class="col-md-6" id="update-btn-col">
+      <%= f.submit :next, {value: @call_mode ? "Process and Move On to Next Lead" : "Update", class: 'btn btn-primary btn-lg update-btn'} %>
+    </div>
   </div>
 </div>
 <% end %>

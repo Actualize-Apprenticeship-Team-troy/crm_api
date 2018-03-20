@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 contacted = [true, false]
 event_name = ['footer_form', 'tutorials', 'started application']
@@ -35,3 +28,13 @@ end
     updated_at: event_creation_datetime
   )
 end
+
+5.times do
+  Outreach.create(
+    outreach_text: "Lead outreach 1",
+    lead_id: 1
+    )
+end
+Outreach.create( outreach_text: "Lead outreach 2", lead_id: 2)
+Outreach.create( outreach_text: "Lead outreach 3", lead_id: 3)
+Outreach.create( outreach_text: "Lead outreach 4", lead_id: 4)
