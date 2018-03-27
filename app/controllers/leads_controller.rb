@@ -46,7 +46,9 @@ class LeadsController < ApplicationController
                   :to   => @lead.phone,
                   :from => ENV['TWILIO_PHONE_NUMBER']
     })
+    binding.pry
     @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| m.date_sent}
+
   end
 
   def update
@@ -101,6 +103,7 @@ class LeadsController < ApplicationController
 
   # Text from the browser:
   def text
+    
     @client = Twilio::REST::Client.new
     @client.messages.create(
       from: ENV['TWILIO_PHONE_NUMBER'],
@@ -108,7 +111,7 @@ class LeadsController < ApplicationController
       body: params[:body]
     )
 
-    render nothing: true
+     redirect_to :back
   end
 
   def no_leads
