@@ -1,0 +1,5 @@
+<%= form_tag("/settings/blah", method: "get") do %>
+  <%= label_tag(:auto_text) %>
+  <%= text_field_tag(:auto_text) %>
+  <%= submit_tag("Save") %>
+<% end %>
