@@ -40,13 +40,15 @@
                 </tr>
                 
                   <tr>
-                    <td colspan="7" class="hiddenRow"><div class="accordian-body collapse" v-bind:id="'events' + lead.id"> 
-                            <p>text goes here</p>
+                    <td colspan="7" class="hiddenRow">
+                      <div class="accordion-body collapse" v-bind:id="'events' + lead.id"> 
+                        <div v-for="event in lead.events">
+                          <p>{{ event.name }}</p>
                         </div>
+                      </div>
 
                     </td>
                 </tr>
-              
               
         
 
