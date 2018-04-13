@@ -27,40 +27,34 @@
                 <th>Call Converter Notes</th>
               </tr>
             </thead>
-            <tbody>
-                 <tr data-toggle="collapse" data-target="#table" class="accordion-toggle">
-                    <td>OBS Name</td>
-                    <td>OBS Description</td>
-                    <td>hpcloud</td>
-                    <td>nova</td>
-                    <td> created</td>
-                    <td> created</td>
-                    <td> created</td>
-
+            <tbody v-for="lead in leads">
+              
+                <tr data-toggle="collapse" :data-target="'#events' + lead.id" class="accordion-toggle">
+                  <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
+                  <td>{{ lead.first_name }}</td>
+                  <td>{{ lead.last_name }}</td>
+                  <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
+                  <td>{{ lead.phone }}</td>
+                  <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
+                  <td>{{ lead.notes }}</td>
                 </tr>
+                
+                  <tr>
+                    <td colspan="7" class="hiddenRow"><div class="accordian-body collapse" v-bind:id="'events' + lead.id"> 
+                            <p>text goes here</p>
+                        </div>
 
-                <tr>
-                <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="table"> 
-                  <p>text goes here</p>
-                </div>
-                  
-                </td>
-            </tr>
+                    </td>
+                </tr>
+              
+              
+        
 
-              <!-- <tr v-for="lead in leads">
-                <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
-                <td>{{ lead.first_name }}</td>
-                <td>{{ lead.last_name }}</td>
-                <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
-                <td>{{ lead.phone }}</td>
-                <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
-                <td>{{ lead.notes }}</td>
-              </tr> -->
+
             </tbody>
           </table>
         </div>
       </div>
-    </div>
   </section>
 </div>
 
