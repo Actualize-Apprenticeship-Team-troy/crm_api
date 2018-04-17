@@ -14,7 +14,8 @@
 
       <div class="row">
         <div class="table-responsive leads-table">
-          <table class="table table-striped table-hover">
+          <table class="table table-striped table-condensed table-hover" style="border-collapse:collapse;">
+           
             <thead>
               <tr>
                 <th>Created</th>
@@ -26,21 +27,38 @@
                 <th>Call Converter Notes</th>
               </tr>
             </thead>
-            <tbody>
-              <tr v-for="lead in leads">
-                <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
-                <td>{{ lead.first_name }}</td>
-                <td>{{ lead.last_name }}</td>
-                <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
-                <td>{{ lead.phone }}</td>
-                <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
-                <td>{{ lead.notes }}</td>
-              </tr>
+            <tbody v-for="lead in leads">
+              
+                <tr data-toggle="collapse" :data-target="'#events' + lead.id" class="accordion-toggle">
+                  <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
+                  <td>{{ lead.first_name }}</td>
+                  <td>{{ lead.last_name }}</td>
+                  <td><a href="" v-on:click="edit(lead)" >{{ lead.email }}</a></td>
+                  <td>{{ lead.phone }}</td>
+                  <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
+                  <td>{{ lead.notes }}</td>
+                </tr>
+                
+                  <tr>
+                    <td colspan="7" class="hiddenRow">
+                      <div class="accordion-body collapse" v-bind:id="'events' + lead.id"> 
+                        <table v-for="event in lead.events" class="table">
+                          <div>         
+                             <tr><td>{{ event.name}}</td>
+                             <td>{{ moment(event.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td> </tr>
+              
+                        </div>
+                      </table>
+                      </div>
+
+                    </td>
+                </tr>
+
+
             </tbody>
           </table>
         </div>
       </div>
-    </div>
   </section>
 </div>
 
