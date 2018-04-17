@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # post '/settings/create' => 'settings#create'
+
+  get '/settings/edit' => 'settings#edit'
+
+  # get '/settings/delete' => 'settings#delete'
+
+  patch '/settings' => 'settings#update'
+
   root to: 'leads#index'
 
   devise_for :admins
