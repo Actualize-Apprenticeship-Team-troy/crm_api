@@ -46,14 +46,12 @@ class LeadsController < ApplicationController
                   :to   => @lead.phone,
                   :from => ENV['TWILIO_PHONE_NUMBER']
     })
-    binding.pry
     @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| m.date_sent}
 
   end
 
   def update
     @lead = Lead.find_by(id: params[:id])
-    # binding.pry
     if @lead.update(lead_params)    
       flash[:success] = "Lead saved!"
       redirect_to '/'
