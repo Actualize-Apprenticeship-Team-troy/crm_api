@@ -33,7 +33,7 @@
                   <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   <td>{{ lead.first_name }}</td>
                   <td>{{ lead.last_name }}</td>
-                  <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
+                  <td><a href="" v-on:click="edit(lead)" >{{ lead.email }}</a></td>
                   <td>{{ lead.phone }}</td>
                   <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   <td>{{ lead.notes }}</td>
@@ -42,15 +42,17 @@
                   <tr>
                     <td colspan="7" class="hiddenRow">
                       <div class="accordion-body collapse" v-bind:id="'events' + lead.id"> 
-                        <div v-for="event in lead.events">
-                          <p>{{ event.name }}</p>
+                        <table v-for="event in lead.events" class="table">
+                          <div>         
+                             <tr><td>{{ event.name}}</td>
+                             <td>{{ moment(event.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td> </tr>
+              
                         </div>
+                      </table>
                       </div>
 
                     </td>
                 </tr>
-              
-        
 
 
             </tbody>

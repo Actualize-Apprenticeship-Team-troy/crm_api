@@ -17,7 +17,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     methods: {
       moment: function(date) {
         return moment(date);
+      },
+      edit: function(lead) {
+        window.location.href = '/leads/' + lead.id + '/edit';
+        console.table(lead);
       }
+
     },
     computed: {
 
