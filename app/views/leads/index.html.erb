@@ -5,10 +5,7 @@
         <h1 class="h3">All Leads</h1>
       </header>
       <div class="row">
-        <%= form_tag('/leads', method: :get) do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag "Search" %>
-        <% end %>
+        Search here:<input type="text" v-model="searchTerm" list="leads">
 
       </div>
       <div class="row">
@@ -26,7 +23,7 @@
                 <th>Call Converter Notes</th>
               </tr>
             </thead>
-            <tbody v-for="lead in leads">
+            <tbody v-for="lead in leads" v-if="foundLead(lead)">
               
                 <tr data-toggle="collapse" :data-target="'#events' + lead.id" class="accordion-toggle">
                   <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
