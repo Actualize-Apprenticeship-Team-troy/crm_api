@@ -53,7 +53,6 @@ class LeadsController < ApplicationController
 
   def update
     @lead = Lead.find_by(id: params[:id])
-    # binding.pry
     if @lead.update(lead_params)    
       flash[:success] = "Lead saved!"
       redirect_to '/'
@@ -123,3 +122,10 @@ class LeadsController < ApplicationController
     params.require(:lead).permit(:first_name, :last_name, :email, :phone, :city, :state, :zip, :contacted, :appointment_date, :notes, :connected, :bad_number, :advisor, :location, :first_appointment_set, :first_appointment_actual, :first_appointment_format, :second_appointment_set, :second_appointment_actual, :second_appointment_format, :enrolled_date, :deposit_date, :sales, :collected, :status, :next_step, :rep_notes, :exclude_from_calling, :meeting_type, :meeting_format, outreaches_attributes: [:id, :outreach_text, :lead_id])
   end
 end
+
+
+    
+
+  
+
+

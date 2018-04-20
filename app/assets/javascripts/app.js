@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     el: '#app',
     data: {
       leads: [],
+      events: [],
       time_format: "12/25/17",
       url: "https://www.google.com/"
     },
@@ -16,7 +17,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     methods: {
       moment: function(date) {
         return moment(date);
+      },
+      edit: function(lead) {
+        window.location.href = '/leads/' + lead.id + '/edit';
+        console.table(lead);
       }
+
     },
     computed: {
 
