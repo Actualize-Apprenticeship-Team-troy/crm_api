@@ -27,11 +27,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
       edit: function(lead) {
         window.location.href = '/leads/' + lead.id + '/edit';
         console.table(lead);
+      },
+      sortColumns: function(sortTerm) {
+        var orderedCheck = _.orderBy(this.leads,sortTerm, 'asc');
+        
+        if (this.leads[0][sortTerm] === orderedCheck[49][sortTerm]) {
+          var newOrder = _.orderBy(this.leads,sortTerm, 'asc');
+          return this.leads = newOrder;
+        } else {
+          var newOrder = _.orderBy(this.leads,sortTerm, 'desc');
+          return this.leads = newOrder;
+        }
       }
-
     },
     computed: {
-
+      
     },
   });
 });
