@@ -12,6 +12,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     mounted: function() {
       $.get('/api/v1/leads.json').success(function(response) {
         this.leads = response;
+        console.log(this.leads)
+        this.leads = _.sortBy(this.leads, function(item){
+          if (item.events[0] && item.events[0].updated_at){
+           return _.sortBy(item.events, "updated_at")
+            // return (item.events[0].updated_at)}
+          }
+          else{
+            return _.sortBy(item.events,"created_at")
+          }
+        })
+        // console.log(orderedCheck)
       }.bind(this));
     },
     methods: {
