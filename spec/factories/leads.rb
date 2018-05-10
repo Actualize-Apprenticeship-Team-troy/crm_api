@@ -45,29 +45,15 @@
 #  online                    :boolean          default(FALSE)
 #
 
-require 'rails_helper'
-
-RSpec.describe Lead, type: :model do 
-  describe "testing associations and attribute types" do
-   it { should have_many(:events)}
-   it { should have_many(:outreaches)}
-   it { should have_db_column(:hot).of_type(:boolean)}
-   it { should have_db_column(:number_of_dials).of_type(:integer)} 
-   it { should have_db_column(:old_lead).of_type(:boolean)}
-   it { should have_db_column(:meeting_type).of_type(:string)}
-   it { should have_db_column(:meeting_format).of_type(:string)}  
-   it { should have_db_column(:ip_state).of_type(:string)}
-   it { should have_db_column(:online).of_type(:boolean)}  
-   it { should  have_db_column(:fake_news).of_type(:string)}
-  end 
-
-  describe "#full_name" do
-    it "expect correct full name" do
-      create 
-    end
+FactoryBot.define do
+  factory :lead do
+    first_name "raul"
+    last_name "sung"
   end
-
 end
+
+
+
 
 
 
