@@ -49,6 +49,7 @@ FactoryBot.define do
   factory :lead do
     first_name "raul"
     last_name "sung"
+    hot true
   end
 end
 

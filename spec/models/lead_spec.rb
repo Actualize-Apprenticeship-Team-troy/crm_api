@@ -74,7 +74,28 @@ RSpec.describe Lead, type: :model do
       expect(lead.full_name).to eq("Kim ")
     end
   end
-
+  describe "#reset" do
+    it "expect lead to be reset" do
+      lead = create(:lead,
+                    hot: false,
+                    contacted: true,
+                    connected: true,
+                    exclude_from_calling: true,
+                    appointment_date: DateTime.now,
+                    advisor: "troy",
+                    number_of_dials: 5,
+                    bad_number: true)
+      lead.reset
+      expect(lead[:hot]).to be(true)
+      expect(lead[:contacted]).to be(false)
+      expect(lead[:connected]).to be(false)
+      expect(lead[:exclude_from_calling]).to be(false)
+      expect(lead[:appointment_date]).to be(nil)
+      expect(lead[:advisor]).to be(nil)
+      expect(lead[:number_of_dials]).to be(0)
+      expect(lead[:bad_number]).to be(false)
+    end
+  end
 end
 
 
