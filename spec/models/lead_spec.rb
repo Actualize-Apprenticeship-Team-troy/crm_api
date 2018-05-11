@@ -63,7 +63,15 @@ RSpec.describe Lead, type: :model do
 
   describe "#full_name" do
     it "expect correct full name" do
-      create 
+      lead = create(:lead)
+      expect(lead.full_name).to eq("Raul Sung")
+    end
+
+    it "expect to handle nils" do
+      lead = create(:lead, 
+                    first_name: "kim",
+                    last_name: nil)
+      expect(lead.full_name).to eq("Kim ")
     end
   end
 

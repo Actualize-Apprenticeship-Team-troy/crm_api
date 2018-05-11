@@ -71,7 +71,7 @@ class Lead < ApplicationRecord
   end
 
   def full_name
-    "#{self.first_name} #{self.last_name}"
+    "#{self.try(:first_name).try(:capitalize)} #{self.try(:last_name).try(:capitalize)}"
   end
 
   def processed_within_minutes
