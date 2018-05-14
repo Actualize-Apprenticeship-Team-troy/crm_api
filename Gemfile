@@ -61,6 +61,7 @@ group :development, :test do
   gem "launchy", "~> 2.4.2"
   gem "selenium-webdriver", "~> 2.43.0"
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov'
 end
 
 group :development do
