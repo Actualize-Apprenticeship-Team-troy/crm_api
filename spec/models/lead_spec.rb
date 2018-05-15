@@ -96,6 +96,9 @@ RSpec.describe Lead, type: :model do
       expect(lead[:bad_number]).to be(false)
     end
   end
+  
+
+
 end
 
 
