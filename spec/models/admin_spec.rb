@@ -22,8 +22,45 @@
 
 require 'rails_helper'
 
-describe "#admin" do
-  it "proves admin factory works" do 
-    expect(build :admin).to be_valid   
-  end 
+RSpec.describe Admin, type: :model do 
+  describe "associations and attributes" do 
+     it { should have_one(:setting)}
+     it { should have_many(:daily_progress_logs)}
+  end
+
+
+  describe "#admin" do
+    it "proves admin factory works" do 
+      expect(build :admin).to be_valid   
+    end 
+  end
+
+  describe "#email" do
+    it "expect email" do
+      admin = create(:admin)
+      expect(admin.email).to eq("actualize@co.com")
+    end
+  end
+
+
+  describe "#email" do 
+    it "should validate presence" do
+      admin = create(:admin)
+      admin.email = nil
+      expect(admin).not_to be_valid
+      
+    end
+  end
+
+  describe "#email" do 
+      it "should validate presence" do
+        admin = create(:admin)
+        admin.email = " "
+        expect(admin).not_to be_valid
+    
+    end
+  end
 end
+
+
+
