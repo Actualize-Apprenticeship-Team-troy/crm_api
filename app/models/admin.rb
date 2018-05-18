@@ -28,6 +28,8 @@ class Admin < ApplicationRecord
   has_one :setting
   has_many :daily_progress_logs
 
+  validates :password, presence: true
+
   def record_progress(lead)
     log = DailyProgressLog.find_or_create_by(admin_id: self.id, date: Date.today)
     log.increment(:processed)

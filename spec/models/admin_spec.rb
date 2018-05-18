@@ -26,6 +26,7 @@ RSpec.describe Admin, type: :model do
   describe "associations and attributes" do 
      it { should have_one(:setting)}
      it { should have_many(:daily_progress_logs)}
+
   end
 
 
@@ -53,13 +54,50 @@ RSpec.describe Admin, type: :model do
   end
 
   describe "#email" do 
-      it "should validate presence" do
+      it "should validate presence email" do
         admin = create(:admin)
         admin.email = " "
         expect(admin).not_to be_valid
-    
     end
   end
+
+  describe "#first_name" do
+    it "expect correct first name" do
+      admin = create(:admin)
+      expect(admin.first_name).to eq("Raul")
+    end
+  end
+
+  describe "#last_name" do
+    it "expect correct last name" do
+      admin = create(:admin)
+      expect(admin.last_name).to eq("roman")
+    end
+  end
+
+  describe "#password" do
+    it "should validate presence password" do
+      admin = create(:admin)
+      expect(admin.password).to eq("password")
+    end
+  end
+
+  describe "#password" do 
+    it "should validate presence of password nil" do
+      admin = create(:admin)
+      admin.password = nil
+      expect(admin).not_to be_valid
+    end
+  end
+
+  describe "#password" do 
+    it "should validate presence password" do
+      admin = create(:admin)
+      admin.password = ""
+      expect(admin).not_to be_valid
+    end
+  end
+
 end
 
 

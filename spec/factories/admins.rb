@@ -25,7 +25,7 @@ FactoryBot.define do
   factory :admin do 
     password "password"
     email "actualize@co.com"
-    first_name "raul"
+    first_name "Raul"
     last_name "roman" 
   end 
 end
