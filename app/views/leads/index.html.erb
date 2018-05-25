@@ -41,7 +41,7 @@
                         <table v-for="event in lead.events" class="table">
                           <div>         
                              <tr><td>{{ event.name}}</td>
-                             <td>{{ moment(event.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td> </tr>
+                             <td>{{ moment(event.updated_at).format('dddd MMM Do YYYY, h:mm a') }}</td> </tr>
               
                         </div>
                       </table>

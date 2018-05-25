@@ -80,7 +80,7 @@
             <div class="row">
               <table class="table">
                 <% @lead.events.each do |event| %>
-                  <tr><td><%= event.name %></td><td><%= event.created_at.strftime("%A %b %e, %l:%M %p") %></td></tr>
+                  <tr><td><%= event.name %></td><td><%= event.updated_at.strftime("%A %b %e, %l:%M %p") %></td></tr>
                 <% end %>
               </table>
             </div>
