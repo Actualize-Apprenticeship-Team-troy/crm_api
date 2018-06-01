@@ -18,16 +18,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
           var sortedEvents = _.orderBy(lead.events, ['updated_at'], ['desc']);
           lead.events = sortedEvents;
         });
-        // this.leads = _.orderBy(this.leads, "events");
-        // this.leads = _.sortBy(this.leads, function(item){
-        // if (item.events[0] && item.events[0].updated_at){
-        // return _.sortBy(item.events, "updated_at")
-        // return (item.events[0].updated_at)}
-        // }
-        // else{
-        // return _.sortBy(item.events,"updated_at")
-        // })
-        // console.log(orderedCheck)
+        var stuff = _.orderBy(this.leads, function(lead) {
+          if (lead.events[0] != undefined) {
+            return lead.events[0].updated_at;
+          };
+        });  
       }.bind(this));
     },
     methods: {
