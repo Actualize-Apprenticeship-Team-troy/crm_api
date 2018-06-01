@@ -12,17 +12,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     mounted: function() {
       $.get('/api/v1/leads.json').success(function(response) {
         this.leads = response; 
-        // response is an array of lead objects
-        console.log(this.leads)
-          this.leads = _.orderBy(this.leads, "updated_at");
-        console.log(this.leads)
+        // response is an array of lead objects 
+        console.log(this.leads);
+        this.leads.map(function(lead) {
+          var sortedEvents = _.orderBy(lead.events, ['updated_at'], ['desc']);
+          lead.events = sortedEvents;
+        });
+        // this.leads = _.orderBy(this.leads, "events");
         // this.leads = _.sortBy(this.leads, function(item){
-          // if (item.events[0] && item.events[0].updated_at){
-           // return _.sortBy(item.events, "updated_at")
-            // return (item.events[0].updated_at)}
-          // }
-          // else{
-            // return _.sortBy(item.events,"updated_at")
+        // if (item.events[0] && item.events[0].updated_at){
+        // return _.sortBy(item.events, "updated_at")
+        // return (item.events[0].updated_at)}
+        // }
+        // else{
+        // return _.sortBy(item.events,"updated_at")
         // })
         // console.log(orderedCheck)
       }.bind(this));
