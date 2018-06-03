@@ -18,11 +18,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
           var sortedEvents = _.orderBy(lead.events, ['updated_at'], ['desc']);
           lead.events = sortedEvents;
         });
-        var stuff = _.orderBy(this.leads, function(lead) {
+        var stuff = _.orderBy(this.leads, function(lead){
           if (lead.events[0] != undefined) {
             return lead.events[0].updated_at;
           };
-        });  
+        })
+        this.leads = stuff.reverse();
+        this.leads = _.orderBy( this.leads, ['events[0]',], ['desc'])
+        var emptyEvents = _.remove(this.leads, function(lead) {
+          return lead.events == 0;
+        });
+
+        this.leads = this.leads.concat(emptyEvents);
       }.bind(this));
     },
     methods: {
