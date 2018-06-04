@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
           var newOrder = _.orderBy(this.leads,sortTerm, 'desc');
           return this.leads = newOrder;
         }
+      },
+      zeroEvent: function(orangeRow) {
+        if (this.leads.events[0] != undefined) {
+        background-color: #f7c204 }
       }
     },
     computed: {
