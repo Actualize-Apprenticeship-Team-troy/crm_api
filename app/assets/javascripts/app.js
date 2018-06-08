@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var foundFirstName = inputName.first_name.toLowerCase().includes(this.searchTerm.toLowerCase());
         var foundLastName = inputName.last_name.toLowerCase().includes(this.searchTerm.toLowerCase());
         var foundEmail = inputName.email.toLowerCase().includes(this.searchTerm.toLowerCase());
-        return foundFirstName || foundLastName || foundEmail;
+        return foundFirstName || foundLastName || foundEmail;       
       },
       edit: function(lead) {
         window.location.href = '/leads/' + lead.id + '/edit';
@@ -39,9 +39,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
           return this.leads = newOrder;
         }
       },
-      zeroEvent: function(orangeRow) {
-        if (this.leads.events[0] != undefined) {
-        background-color: #f7c204 }
+      emptyOutreach: function(outreaches) {
+        if (outreaches.length === 0 ) {
+          return '#f7c204';
+        } 
       }
     },
     computed: {
