@@ -22,7 +22,7 @@
                 <th>Call Converter Notes</th>
               </tr>
             </thead>
-            <tbody v-for="lead in leads" v-if="foundLead(lead)" v-bind:style="{'background-color': emptyOutreach(lead.outreaches)}">
+            <tbody v-for="lead in leads" v-if="foundLead(lead)" v-bind:style="{'background-color': emptyOutreach(lead.outreaches, lead.events)}">
               
                 <tr data-toggle="collapse" :data-target="'#events' + lead.id" class="accordion-toggle">
                   <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>

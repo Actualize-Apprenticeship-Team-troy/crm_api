@@ -57,10 +57,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
           return this.leads = newOrder;
         }
       },
-      emptyOutreach: function(outreaches) {
-        if (outreaches.length === 0 ) {
+      emptyOutreach: function(outreaches, events) {
+
+
+
+        console.log(events && events[0].updated_at)
+        if (outreaches.length === 0) {
           return '#f7c204';
-        } 
+        } else if (events && events[0].updated_at){
+          if (moment(events[0].updated_at).format('dddd MMM Do YYYY, h:mm a') === "Monday Mar 12th 2018, 7:46 am"){
+             return '#0cc6f4';
+            }
+         
+        }
       }
     },
     computed: {
