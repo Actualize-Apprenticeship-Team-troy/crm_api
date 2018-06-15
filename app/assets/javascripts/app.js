@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var emptyEvents = _.remove(this.leads, function(lead) {
           return lead.events == 0;
         });
-
         this.leads = this.leads.concat(emptyEvents);
       }.bind(this));
     },
@@ -48,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       },
       sortColumns: function(sortTerm) {
         var orderedCheck = _.orderBy(this.leads,sortTerm, 'asc');
-        
         if (this.leads[0][sortTerm] === orderedCheck[49][sortTerm]) {
           var newOrder = _.orderBy(this.leads,sortTerm, 'asc');
           return this.leads = newOrder;
@@ -57,14 +55,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
           return this.leads = newOrder;
         }
       },
-      emptyOutreach: function(outreaches) {
-        if (outreaches.length === 0 ) {
+      emptyOutreach: function(outreaches, events) {
+        // if event > outreach DONE
+        // blue DONE
+        // if outreach is 0 DONE
+        // orange DONE
+        // if event < outreach
+
+        // do nothing
+
+        //console.log(outreaches[0].updated_at)
+        if (outreaches.length === 0) {
           return '#f7c204';
-        } 
+        } else if (events && events[0].updated_at > outreaches[0].updated_at){     
+          return '#0cc6f4';
+        }
+
       }
     },
     computed: {
-      
     },
   });
 });
