@@ -23,5 +23,6 @@ json.array!  @leads.each do |lead|
               :updated_at
   json.outreaches lead.outreaches,
               :outreach_text,
-              :lead_id
+              :lead_id,
+              :updated_at
 end
